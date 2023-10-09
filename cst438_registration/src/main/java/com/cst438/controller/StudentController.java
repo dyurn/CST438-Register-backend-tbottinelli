@@ -11,6 +11,7 @@ import com.cst438.domain.StudentRepository;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin (origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/students")
 public class StudentController {
@@ -46,7 +47,7 @@ public class StudentController {
 //    }
 //    
   //Updating the student status
-    @PutMapping("/{studentId}/status")
+    @PutMapping("/{studentId}")
     public ResponseEntity<Student> updateStudentStatus(@PathVariable("studentId") int studentId, @RequestBody StudentDTO studentDTO) {
         Optional<Student> studentOpt = studentRepository.findById(studentId);
         if (!studentOpt.isPresent()) {
@@ -54,6 +55,8 @@ public class StudentController {
         }
         Student student = studentOpt.get();
         student.setStatus(studentDTO.status());
+        student.setName(studentDTO.name());
+        student.setEmail(studentDTO.email());
         studentRepository.save(student);
         return ResponseEntity.ok(student);
     }

@@ -29,26 +29,29 @@ public class GradebookServiceMQ implements GradebookService {
 
 	// send message to grade book service about new student enrollment in course
 	@Override
-	public void enrollStudent(String student_email, String student_name, int course_id) {
-		System.out.println("Start Message "+ student_email +" " + course_id); 
-		// create EnrollmentDTO, convert to JSON string and send to gradebookQueue
-		// TODO
-	}
+    public void enrollStudent(String student_email, String student_name, int course_id) {
+        System.out.println("Start Message " + student_email + " " + course_id);
+        
+        EnrollmentDTO enrollment = new EnrollmentDTO(0, student_email, student_name, course_id);
+        String message = asJsonString(enrollment);
+        rabbitTemplate.convertAndSend(gradebookQueue.getName(), message);
+    }
 	
 	@RabbitListener(queues = "registration-queue")
 	@Transactional
 	public void receive(String message) {
-		System.out.println("Receive grades :" + message);
-		/*
-		 * for each student grade in courseDTOG,  find the student enrollment 
-		 * entity and update the grade.
-		 */
-		
-		// deserialize the string message to FinalGradeDTO[] 
-		
-		// TODO
+	    System.out.println("Receive grades :" + message);
 
+	    FinalGradeDTO[] finalGrades = fromJsonString(message, FinalGradeDTO[].class);
+	    for (FinalGradeDTO grade : finalGrades) {
+	        Enrollment enrollment = enrollmentRepository.findByEmailAndCourseId(grade.studentEmail(), grade.courseId());
+	        if (enrollment != null) {
+	            enrollment.setCourseGrade(grade.grade());
+	            enrollmentRepository.save(enrollment);
+	        }
+	    }
 	}
+
 	
 	private static String asJsonString(final Object obj) {
 		try {
