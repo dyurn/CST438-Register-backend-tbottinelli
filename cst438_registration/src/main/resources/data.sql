@@ -1,7 +1,7 @@
 INSERT INTO student VALUES 
-(1,'test','test@csumb.edu',NULL,0),
-(2,'david','dwisneski@csumb.edu',NULL,0),
-(3,'tom', 'trebold@csumb.edu', NULL, 0);
+(1,'test','test@csumb.edu',NULL,0, '$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue','USER'),
+(2,'david','dwisneski@csumb.edu',NULL,0, '$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue','USER'),
+(3,'tom', 'trebold@csumb.edu', NULL, 0, '$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue','USER');
 
 INSERT INTO course VALUES 
 (2020,'Fall',30157,1,'BUS 203 - Financial Accounting','We 6:00PM - 7:20PM','506','112','cchou@csumb.edu','2020-08-24','2020-12-13'),
