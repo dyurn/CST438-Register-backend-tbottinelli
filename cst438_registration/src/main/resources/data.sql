@@ -1,6 +1,6 @@
 INSERT INTO student VALUES 
 (1,'test','test@csumb.edu',NULL,0, '$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue','USER'),
-(2,'david','dwisneski@csumb.edu',NULL,0, '$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue','USER'),
+(2,'david','dwisneski@csumb.edu',NULL,0, '$2a$10$Hi.ul3x9OBAzb9ht2z8WCuGSRCA5H33nrxkpef2jWKzVZKhXPhy5S','ADMIN'),
 (3,'tom', 'trebold@csumb.edu', NULL, 0, '$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue','USER');
 
 INSERT INTO course VALUES 

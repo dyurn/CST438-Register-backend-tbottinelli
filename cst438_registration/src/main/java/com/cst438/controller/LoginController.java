@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cst438.dto.AccountCredentials;
+import com.cst438.domain.AccountCredentials;
 import com.cst438.service.JwtService;
 
 
