@@ -22,7 +22,7 @@ public class StudentController {
     private StudentRepository studentRepository;
 
     @GetMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Student>> getAllStudents() {
         return ResponseEntity.ok((List<Student>) studentRepository.findAll());
     }
